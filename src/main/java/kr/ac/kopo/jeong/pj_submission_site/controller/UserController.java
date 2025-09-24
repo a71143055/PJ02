@@ -26,4 +26,11 @@ public class UserController {
         userService.registerUser(username, password, role);
         return "redirect:/login";
     }
+
+    @PostMapping("/delete-user")
+    public String deleteUser(@RequestParam String username) {
+        userService.deleteUserByUsername(username);
+        return "redirect:/home";
+    }
+
 }

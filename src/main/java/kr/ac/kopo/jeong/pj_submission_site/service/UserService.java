@@ -23,5 +23,10 @@ public class UserService {
         user.setRole(role);
         userRepository.save(user);
     }
+
+    public void deleteUserByUsername(String username) {
+        userRepository.deleteByUsername(username);
+    }
+
 }
 
