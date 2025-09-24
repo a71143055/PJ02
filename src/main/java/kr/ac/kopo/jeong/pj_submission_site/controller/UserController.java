@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
-
     @Autowired
     private UserService userService;
 
@@ -32,5 +31,4 @@ public class UserController {
         userService.deleteUserByUsername(username);
         return "redirect:/home";
     }
-
 }

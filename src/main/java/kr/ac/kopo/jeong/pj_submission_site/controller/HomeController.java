@@ -8,7 +8,6 @@ import java.security.Principal;
 
 @Controller
 public class HomeController {
-
     @GetMapping("/home")
     public String showHomePage(Model model, Principal principal) {
         model.addAttribute("username", principal.getName());
