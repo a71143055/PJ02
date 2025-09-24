@@ -4,6 +4,7 @@ import kr.ac.kopo.jeong.pj_submission_site.model.Role;
 import kr.ac.kopo.jeong.pj_submission_site.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -13,6 +14,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/register")
+    public String showRegisterForm() {
+        return "register"; // 회원가입 폼 렌더링
+    }
+
     @PostMapping("/register")
     public String register(@RequestParam String username,
                            @RequestParam String password,
@@ -20,5 +26,4 @@ public class UserController {
         userService.registerUser(username, password, role);
         return "redirect:/login";
     }
-
 }
