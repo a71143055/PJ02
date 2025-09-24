@@ -22,6 +22,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/login", "/register", "/css/**").permitAll() // 루트 경로 허용 추가
+                        .requestMatchers("/lectures/create").hasRole("PROFESSOR")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
