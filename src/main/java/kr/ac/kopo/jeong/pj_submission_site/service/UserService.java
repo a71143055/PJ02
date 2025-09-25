@@ -1,5 +1,6 @@
 package kr.ac.kopo.jeong.pj_submission_site.service;
 
+import jakarta.transaction.Transactional;
 import kr.ac.kopo.jeong.pj_submission_site.model.Role;
 import kr.ac.kopo.jeong.pj_submission_site.model.User;
 import kr.ac.kopo.jeong.pj_submission_site.repository.UserRepository;
@@ -24,9 +25,13 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
     public void deleteUserByUsername(String username) {
-        userRepository.deleteByUsername(username);
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+        userRepository.delete(user);
     }
+
 
 }
 
