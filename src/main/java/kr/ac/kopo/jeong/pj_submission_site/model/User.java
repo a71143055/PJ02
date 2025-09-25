@@ -11,15 +11,13 @@ import java.util.UUID;
 @Getter
 @Setter
 public class User {
-    @Column(unique = true)
-    private String username;
-
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(columnDefinition = "VARCHAR(36)")
     private String id;
 
+    @Column(unique = true)
     private String username;
     private String password;
 
