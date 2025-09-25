@@ -33,13 +33,11 @@
 
 <h3>사용자 삭제</h3>
 <form th:action="@{/delete-user}" method="post">
-  <label for="username">삭제할 아이디 선택:</label>
-  <select name="username" id="username" required>
+  <select name="username" required>
     <option th:each="user : ${users}" th:value="${user.username}" th:text="${user.username}"></option>
   </select>
   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
   <button type="submit">삭제</button>
 </form>
-
 </body>
 </html>
